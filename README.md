@@ -21,6 +21,50 @@ Do you remember the Shell? It’s exactly the same but limited to a specific use
 -  Update attributes of an object
 -  Destroy an object
 
+#### Installation
+
+    git clone https://github.com/nikolasribeiro/AirBnB_clone.git
+    cd AirBnB_clone
+
+#### How to use the interpreter?
+
+    Usage 
+    
+    interactive mode:
+
+    $ ./console.py
+    (hbnb) help
+
+    Documented commands (type help <topic>):
+    ========================================
+    EOF  all  create  destroy  help  quit  show  update
+
+    (hbnb)
+    (hbnb) quit
+
+    ------------------------------------------------------
+
+    Non-Interactive Mode
+
+    echo "help" | ./console.py
+    (hbnb) 
+    Documented commands (type help <topic>):
+    ========================================
+    EOF  all  create  destroy  help  quit  show  update
+
+    (hbnb) 
+
+    ------------------------------------------------------
+
+    Example to use a console
+
+    (hbnb) create BaseModel
+    228b5b0b-0a25-493b-bf7b-2bb9b7dffe32
+    (hbnb) show BaseModel 228b5b0b-0a25-493b-bf7b-2bb9b7dffe32
+    [BaseModel] (228b5b0b-0a25-493b-bf7b-2bb9b7dffe32) {'id': '228b5b0b-0a25-493b-bf7b-2bb9b7dffe32', 'created_at': '2021-02-18T18:03:37.393334', 'updated_at': '2021-02-18T18:03:37.393355', '__class__': 'BaseModel'}
+    (hbnb) quit
+
+
 ## General
 -  How to create a Python package
 -  How to create a command interpreter in Python using the cmd module
