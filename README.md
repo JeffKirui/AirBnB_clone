@@ -23,7 +23,7 @@ Do you remember the Shell? It’s exactly the same but limited to a specific use
 
 #### Installation
 
-    git clone https://github.com/nikolasribeiro/AirBnB_clone.git
+    git clone https://github.com/JeffKirui/AirBnB_clone.git
     cd AirBnB_clone
 
 #### How to use the interpreter?
