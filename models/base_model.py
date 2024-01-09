@@ -6,6 +6,7 @@ from datetime import datetime
 
 time = "%Y-%m-%dT%H:%M:%S.%f"
 
+
 class BaseModel:
     """ Represents a BaseModel of the project. """
     def __init__(self, *args, **kwargs):
@@ -30,3 +31,8 @@ class BaseModel:
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
             storage.new(self)
+
+    def __str__(self):
+        """ String representation of BaseModel. """
+        return "[{}] ({}) {}".\
+            format(self.__class__.__name__, self.id, self.__dict__)
