@@ -36,3 +36,16 @@ class BaseModel:
         """ String representation of BaseModel. """
         return "[{}] ({}) {}".\
             format(self.__class__.__name__, self.id, self.__dict__)
+    
+    def save(self):
+        """ Update public instance attribute update_at with current datetime. """
+        self.update_at = datetime.now()
+        storage.save()
+
+    def to_dict(self):
+        """ Returns dictionary containing all key/values pairs. """
+        my_dict = dict(self.__dict__)
+        my_dict["__class__"] = type(self).__name__
+        my_dict["created_at"] = my_dict["created_at"].isoformat()
+        my_dict["updated_at"] = my_dict["updated_at"].isoformat()
+        return my_dict
