@@ -1,30 +1,24 @@
 #!/usr/bin/python3
-""" Base class module for AirBnB clone console. """
+""" Module base model """
 from uuid import uuid4
 from datetime import datetime
 from models import storage
 
-time = "%Y-%m-%dT%H:%M:%S.%f"
 
 class BaseModel:
-    """ Represents a BaseModel of the project. """
+    """ class BaseModel """
 
     def __init__(self, *args, **kwargs):
-        """ Initializing a class BaseModel.
-
-        Args:
-            - *args (any): args list
-            - **kwargs (dict): key-value pair attributes
-        """        
+        """ function __init__ """
         if kwargs is not None and kwargs != {}:
             for key in kwargs.keys():
                 if key == "created_at":
                     self.__dict__["created_at"] = datetime.strptime(
-                        kwargs["created_at"], time
+                        kwargs["created_at"], "%Y-%m-%dT%H:%M:%S.%f"
                     )
                 elif key == "updated_at":
                     self.__dict__["updated_at"] = datetime.strptime(
-                        kwargs["updated_at"], time
+                        kwargs["updated_at"], "%Y-%m-%dT%H:%M:%S.%f"
                     )
                 else:
                     self.__dict__[key] = kwargs[key]
@@ -35,21 +29,21 @@ class BaseModel:
             storage.new(self)
 
     def __str__(self):
-        """ String representation of BaseModel. """
+        """ function __str__ """
         return "[{}] ({}) {}".\
             format(type(self).__name__, self.id, self.to_dict())
 
     def save(self):
-        """ Update public instance attribute update_at with current datetime. """
+        """ function save """
         self.updated_at = datetime.now()
         storage.save()
 
     def to_dict(self):
-        """ Returns dictionary containing all key/values pairs. """
-        my_dict = dict(self.__dict__)
-        my_dict["__class__"] = type(self).__name__
-        my_dict["created_at"] = my_dict["created_at"].\
+        """ function to_dict """
+        alm_diccionario = dict(self.__dict__)
+        alm_diccionario["__class__"] = type(self).__name__
+        alm_diccionario["created_at"] = alm_diccionario["created_at"].\
             isoformat()
-        my_dict["updated_at"] = my_dict["updated_at"].\
+        alm_diccionario["updated_at"] = alm_diccionario["updated_at"].\
             isoformat()
-        return my_dict
+        return alm_diccionario
