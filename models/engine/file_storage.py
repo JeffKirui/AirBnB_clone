@@ -1,31 +1,33 @@
 #!/usr/bin/python3
-""" File_storage module. """
+""" Module for file_storage class. """
 import json
 
 
 class FileStorage:
-    """ Serialization and deserialization. """
+    """ Serialise BaseModel to JSON and deserialise JSON back to BaseModel. """
+
     __file_path = "file.json"
     __objects = {}
 
     def all(self):
-        """ Returns the dictionary __objects """
+        """ Returns __object dict. """
         return self.__objects
 
     def new(self, obj):
-        """ Sets in __objects with key <obj_class_name>.id """
+        """ Set in __object obj with key <obj_class_name>.id. """
         if obj:
             key = "{}.{}".format(type(obj).__name__, obj.id)
             FileStorage.__objects[key] = obj
 
     def save(self):
-        """ Serialize __objects to th JSON file __file_path. """
+        """ Serialise __objects to the JSON file __file_path. """
         with open(self.__file_path, "w", encoding="utf-8") as file:
-            new_dict = {key: value.to_dict() for key, value in self.__objects.items()}
+            """ d = new_dictionary """
+            d = {key: value.to_dict() for key, value in self.__objects.items()}
             json.dump(d, file)
 
     def reload(self):
-        """ Deserialize JSON file to __objects. """
+        """ Deserialise the JSON file __file_path to __objects. """
         try:
             with open(self.__file_path, "r", encoding="utf-8") as file:
                 for key, value in (json.load(file)).items():
